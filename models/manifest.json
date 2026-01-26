@@ -1,0 +1,39 @@
+{
+  "models": {
+    "face_landmarker.task": {
+      "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/latest/face_landmarker.task",
+      "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
+      "source": "MediaPipe Face Landmarker (float16)"
+    },
+    "selfie_multiclass_256x256.tflite": {
+      "url": "https://storage.googleapis.com/mediapipe-models/image_segmenter/selfie_multiclass_256x256/float32/latest/selfie_multiclass_256x256.tflite",
+      "sha256": "c6748b1253a99067ef71f7e26ca71096cd449baefa8f101900ea23016507e0e0",
+      "source": "MediaPipe Selfie Segmentation model"
+    },
+    "face_parsing_resnet34.pt": {
+      "url": "https://github.com/yakhyo/face-parsing/releases/download/weights/resnet34.pt",
+      "sha256": "5e9db39a894a3462eeed1a5bc32c24bd08a168f35a17fb95b06d7f0a9d59cb34",
+      "source": "Face parsing (BiSeNet) weights"
+    },
+    "GFPGANv1.4.pth": {
+      "url": "https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth",
+      "sha256": "e2cd4703ab14f4d01fd1383a8a8b266f9a5833dacee8e6a79d3bf21a1b6be5ad",
+      "source": "GFPGAN v1.4 weights"
+    },
+    "RealESRGAN_x2plus.pth": {
+      "url": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.1/RealESRGAN_x2plus.pth",
+      "sha256": "49fafd45f8fd7aa8d31ab2a22d14d91b536c34494a5cfe31eb5d89c2fa266abb",
+      "source": "Real-ESRGAN x2plus weights"
+    },
+    "detection_Resnet50_Final.pth": {
+      "url": "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth",
+      "sha256": "6d1de9c2944f2ccddca5f5e010ea5ae64a39845a86311af6fdf30841b0a5a16d",
+      "source": "facexlib face detector weights"
+    },
+    "parsing_parsenet.pth": {
+      "url": "https://github.com/xinntao/facexlib/releases/download/v0.2.2/parsing_parsenet.pth",
+      "sha256": "3d558d8d0e42c20224f13cf5a29c79eba2d59913419f945545d8cf7b72920de2",
+      "source": "facexlib parsing weights"
+    }
+  }
+}

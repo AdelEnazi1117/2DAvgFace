@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "avgface"
+version = "0.1.0"
+description = "2D face averaging with a simple CLI and web UI."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["apps*"]

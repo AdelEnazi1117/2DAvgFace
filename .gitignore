@@ -1,0 +1,63 @@
+# Output files
+runtime/outputs/*
+runtime/uploads/*
+!runtime/outputs/.gitkeep
+!runtime/uploads/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Models
+models/*
+!models/.gitkeep
+!models/manifest.json
+*.dat
+*.task
+*.tflite
+*.pt
+*.pth
+*.onnx
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local AI tooling
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# User image folders
+data/faces/*
+!data/faces/.gitkeep
+!data/faces/README.md
+
+# Example images (optional)
+# (tracked on purpose for the web UI "Use example photos" flow)
+
+# Build artifacts
+*.egg-info/
+dist/
+build/
+*.c
+*.cpp
+*.so
+
+# OSGrep
+.osgrep/
+.osgrep

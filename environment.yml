@@ -1,0 +1,20 @@
+name: avgface
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - opencv
+  - scipy
+  - pyyaml
+  - pillow
+  - pip
+  - pip:
+      - mediapipe
+      - torch
+      - torchvision
+      - flask
+      - gfpgan
+      - realesrgan
+      - basicsr
+      - facexlib
