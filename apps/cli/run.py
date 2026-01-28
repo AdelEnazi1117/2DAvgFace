@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import signal
 import subprocess
 import sys
 from pathlib import Path
@@ -103,6 +104,39 @@ def resolve_faces_dir(args: argparse.Namespace) -> Path:
     return DEFAULT_FACES_DIR
 
 
+def run_subprocess(cmd: list[str], *, cwd: Path, on_interrupt_msg: str | None = None) -> int:
+    process = subprocess.Popen(cmd, cwd=str(cwd))
+    try:
+        return process.wait()
+    except KeyboardInterrupt:
+        if on_interrupt_msg:
+            print(f"\n{on_interrupt_msg}")
+
+        # Forward Ctrl+C to child, then fall back to terminate/kill if needed.
+        try:
+            process.send_signal(signal.SIGINT)
+        except Exception:
+            pass
+
+        try:
+            process.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            try:
+                process.terminate()
+            except Exception:
+                pass
+            try:
+                process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                try:
+                    process.kill()
+                except Exception:
+                    pass
+                process.wait()
+
+        return 130
+
+
 def run_pipeline(args: argparse.Namespace, extra: list[str]) -> int:
     faces_dir = resolve_faces_dir(args)
     image_count = count_images(faces_dir)
@@ -139,7 +173,7 @@ def run_pipeline(args: argparse.Namespace, extra: list[str]) -> int:
         cmd.append("--show")
 
     cmd.extend(extra)
-    return subprocess.call(cmd, cwd=str(PROJECT_ROOT))
+    return run_subprocess(cmd, cwd=PROJECT_ROOT, on_interrupt_msg="Processing canceled.")
 
 
 def run_web(args: argparse.Namespace, extra: list[str]) -> int:
@@ -154,7 +188,7 @@ def run_web(args: argparse.Namespace, extra: list[str]) -> int:
     if args.debug:
         cmd.append("--debug")
     cmd.extend(extra)
-    return subprocess.call(cmd, cwd=str(PROJECT_ROOT))
+    return run_subprocess(cmd, cwd=PROJECT_ROOT, on_interrupt_msg="Server stopped.")
 
 
 def main() -> int:
