@@ -2,6 +2,27 @@
 
 Simple 2D face averaging with a clean CLI and an easy web UI. Processing runs 100% locally on your machine.
 
+## Showcase
+
+Example inputs:
+
+![Example inputs collage](data/examples/sample_images_for_readme/photo-collage_from_example_photos.png)
+
+Outputs by quality mode:
+
+<table>
+  <tr>
+    <th>Fast</th>
+    <th>Balanced</th>
+    <th>Max (BETA)</th>
+  </tr>
+  <tr>
+    <td><img src="data/examples/sample_images_for_readme/fast_example.jpg" alt="Fast output" width="100%" /></td>
+    <td><img src="data/examples/sample_images_for_readme/balanced_example.jpg" alt="Balanced output" width="100%" /></td>
+    <td><img src="data/examples/sample_images_for_readme/maximum_example.jpg" alt="Max output" width="100%" /></td>
+  </tr>
+</table>
+
 ## Quick Start
 
 ### Web UI
@@ -94,20 +115,6 @@ What this does:
 
 You must activate the environment every time you want to use AvgFace.
 
-**On Linux/Mac:**
-
-```bash
-conda activate avgface
-```
-
-**On Windows (Command Prompt):**
-
-```bash
-conda activate avgface
-```
-
-**On Windows (PowerShell):**
-
 ```bash
 conda activate avgface
 ```
@@ -132,26 +139,38 @@ All dependencies installed.
 
 If you see errors, check [Troubleshooting](docs/TROUBLESHOOTING.md).
 
-**Models:** Core and enhancement models are downloaded automatically on first use and stored in `models/` (not committed to git).
-
-### After Installation
-
-Every time you want to use AvgFace:
-
-1. Open terminal
-2. Activate environment:
-   ```bash
-   conda activate avgface
-   ```
-3. Navigate to project folder (if not already there):
-   ```bash
-   cd facer-avg
-   ```
-4. Run commands
-
 ---
 
 ## Usage
+
+### Web UI
+
+```bash
+python apps/cli/run.py web
+```
+
+Visit http://localhost:5000 and:
+
+- Drop images or select files
+- Click "Use example photos" to test
+- Download the averaged result
+
+**Stop the server:** Press `Ctrl+C` in the terminal.
+
+**Quality Modes:**
+
+- `fast`: Quick preview, no enhancement libraries used
+- `balanced`: Restoration enabled (requires enhancement libraries)
+- `max`: Restoration + upscaling (requires enhancement libraries, default)
+
+#### Web UI Features
+
+- **4-Step Workflow**: Add photos → Tune output → Process → Download
+- **Sticky Header**: Step indicator stays visible while scrolling
+- **Progress Tracking**: Real-time progress bar and live logs
+- **Keyboard Shortcuts**: Press `?` to view available shortcuts
+- **Tooltips & Hints**: Helpful guidance below each action
+- **Responsive Design**: Works on desktop and mobile
 
 ### CLI
 
@@ -176,29 +195,6 @@ python apps/cli/run.py run --faces <path> --quality max --size 1600x2200
 - `balanced`: Restoration enabled (requires enhancement libraries)
 - `max`: Restoration + upscaling (requires enhancement libraries, default)
 
-### Web UI
-
-```bash
-python apps/cli/run.py web
-```
-
-Visit http://localhost:5000 and:
-
-- Drop images or select files
-- Click "Use example photos" to test
-- Download the averaged result
-
-**Stop the server:** Press `Ctrl+C` in the terminal.
-
-#### Web UI Features
-
-- **4-Step Workflow**: Add photos → Tune output → Process → Download
-- **Sticky Header**: Step indicator stays visible while scrolling
-- **Progress Tracking**: Real-time progress bar and live logs
-- **Keyboard Shortcuts**: Press `?` to view available shortcuts
-- **Tooltips & Hints**: Helpful guidance below each action
-- **Responsive Design**: Works on desktop and mobile
-
 ---
 
 ## Features
@@ -216,6 +212,7 @@ See `THIRD_PARTY_NOTICES.md` for dataset, model, and library credits.
 ## Contributing
 
 See `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md`.
+
 - **Quality options**: Fast preview to max quality with upscaling
 - **High-quality defaults**: Max quality with restoration + upscaling out of the box
 
