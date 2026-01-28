@@ -4,7 +4,7 @@ Simple 2D face averaging with a clean CLI and an easy web UI. Processing runs 10
 
 ## Showcase
 
-Example inputs:
+Example inputs (Human Faces dataset by Ashwin Gupta (Kaggle) — CC0: Public Domain):
 
 ![Example inputs collage](data/examples/sample_images_for_readme/photo-collage_from_example_photos.png)
 
